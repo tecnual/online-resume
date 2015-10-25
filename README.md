@@ -1,6 +1,7 @@
 # onlineResume
 On line resume made with Angular.js, Materialize, jQuery...
-You can seea demo at [Libertual's page](http://libertual.github.io/resume.html)
+
+Demo at [Libertual's page](http://libertual.github.io/resume.html)
 
 ## Prerequisite Technologies
 ### Linux
