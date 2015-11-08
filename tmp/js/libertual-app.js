@@ -1,5 +1,5 @@
 // app.js
-
+"use strict";
 
 /* global angular */
 var App = angular.module('App', []);
