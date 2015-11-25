@@ -5,7 +5,7 @@
 var App = angular.module('App', []);
 
 App.controller('ResumeCtrl', function($scope, $http) {
-  $http.get('/resume.json')
+  $http.get('resume.json')
     .then(function(res) {
       // Storing the json data object as 'scores'
       $scope.resume = res.data;
