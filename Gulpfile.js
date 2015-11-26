@@ -15,6 +15,7 @@ var gulp = require('gulp'),
     rev = require('gulp-rev'),
     sass = require('gulp-sass'),
     uncss = require('gulp-uncss'),
+    eslint = require('gulp-eslint'),
     imagemin = require('gulp-imagemin'),
     pngcrush = require('imagemin-pngcrush');
 
@@ -42,6 +43,19 @@ gulp.task('jshint', function() {
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('eslint', function () {
+    return gulp.src(['./src/js/*.js'])
+        // eslint() attaches the lint output to the eslint property
+        // of the file object so it can be used by other modules.
+        .pipe(eslint({configFile: '.eslintrc'}))
+        // eslint.format() outputs the lint results to the console.
+        // Alternatively use eslint.formatEach() (see Docs).
+        .pipe(eslint.format())
+        // To have the process exit with an error code (1) on
+        // lint error, return the stream and pipe to failOnError last.
+        .pipe(eslint.failOnError());
 });
 
 gulp.task('sass', ['clean'], function() {
@@ -115,7 +129,7 @@ gulp.task('images', function() {
 
 gulp.task('watch', function() {
   gulp.watch(['./src/scss/**/*.scss'], ['inject','copy']);
-  gulp.watch(['./src/js/**/*.js', './Gulpfile.js'], ['jshint', 'copy', 'compress']);
+  gulp.watch(['./src/js/*.js', './Gulpfile.js'], ['eslint', 'copy', 'compress']);
 });
 
 gulp.task('default', ['inject']);

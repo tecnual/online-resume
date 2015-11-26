@@ -5,7 +5,7 @@
     "birthdate": "1977-08-12T23:10:00.000Z",
     "pictures": {
       "principal": {
-        "url":"/images/personal-picture.jpg",
+        "url":"images/personal-picture.jpg",
         "title": "John Locke - Full Stack Web Developer",
         "alt": "John Locke"
       }

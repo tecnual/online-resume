@@ -582,7 +582,7 @@ $(document).ready(function($){
 			title: 'La nube de Libertual',
 			icon: 'images/marker-icon.png',
 			infoWindow: {
-				content: '<p>La nube de libertual <br><img src="/images/refugio-la-nube.jpg"></p>'
+				content: '<p>La nube de libertual <br><img src="images/refugio-la-nube.jpg"></p>'
 			}
 		});
 
