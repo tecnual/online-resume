@@ -65,12 +65,12 @@ gulp.task('sass', ['clean'], function() {
 });
 
 // Busca en las carpetas de estilos y javascript los archivos
-// para inyectarlos en el index.html
+// para inyectarlos en resume.html
 
 gulp.task('inject', ['sass'], function() {
   gulp.src('./src/js/**/*.js')
     .pipe(gulp.dest('./tmp/js'));
-  return gulp.src('./src/index.html')
+  return gulp.src('./src/resume.html')
   .pipe(inject(gulp.src('./src/js/libertual-*.js'), {starttag: '<!-- inject:app:{{ext}} -->', ignorePath: '/src'}))
   .pipe(inject(
     gulp.src(['./src/js/vendor/*.js']).pipe(angularFilesort()), {
@@ -85,11 +85,11 @@ gulp.task('inject', ['sass'], function() {
   .pipe(gulp.dest('./tmp'));
 });
 
-// Comprime los archivos CSS y JS enlazados en el index.html
+// Comprime los archivos CSS y JS enlazados en el resume.html
 // y los minifica.
 
 gulp.task('compress', function() {
-  gulp.src('./tmp/index.html')
+  gulp.src('./tmp/resume.html')
     .pipe(useref.assets())
     .pipe(gulpif('*.js', uglify({mangle: false })))
     .pipe(gulp.dest('./dist'));
@@ -99,16 +99,16 @@ gulp.task('compress', function() {
 gulp.task('uncss', function() {
   gulp.src('./dist/css/style.min.css')
     .pipe(uncss({
-      html: ['./tmp/index.html']
+      html: ['./tmp/resume.html']
     }))
     .pipe(gulp.dest('./dist/css'));
 });
 
-// Copia el contenido de los estáticos e index.html al directorio
+// Copia el contenido de los estáticos e resume.html al directorio
 // de producción sin tags de comentarios
 
 gulp.task('copy', function() {
-  gulp.src('./tmp/index.html')
+  gulp.src('./tmp/resume.html')
     .pipe(useref())
     .pipe(gulp.dest('./dist'));
   gulp.src('./src/resume.json')
